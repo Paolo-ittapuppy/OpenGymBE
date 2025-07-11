@@ -1,0 +1,35 @@
+{
+  "name": "opengymbe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paolo-ittapuppy/OpenGymBE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Paolo-ittapuppy/OpenGymBE/issues"
+  },
+  "homepage": "https://github.com/Paolo-ittapuppy/OpenGymBE#readme",
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "@supabase/supabase-js": "^2.50.4",
+    "dotenv": "^17.2.0",
+    "fastify": "^5.4.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.0.12",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

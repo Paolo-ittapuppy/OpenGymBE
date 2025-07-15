@@ -5,7 +5,7 @@ import profileRoutes from './Profile/ProfileRoute';
 import cors from '@fastify/cors';
 import sessionRoute from './Session/SessionRoute';
 
-const fastify = Fastify({ logger: true });
+const fastify = Fastify({ logger: false });
 fastify.register(cors, {
   origin: ['http://localhost:3000'], // Adjust as needed
   credentials: true,

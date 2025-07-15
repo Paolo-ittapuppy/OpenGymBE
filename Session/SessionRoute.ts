@@ -2,11 +2,11 @@ import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import { supabase } from '../Supabase/SupabaseServices';
 import { verifySupabaseToken } from '../middleware/VerifySupaToken';
 import { CreateSessionBody } from '../BodyFormats/BodyFormats';
+import { constrainedMemory } from 'process';
 
 export default async function sessionRoute(fastify: FastifyInstance) {
     fastify.post('/create', async (req: FastifyRequest, res: FastifyReply) => {
         const user_id = verifySupabaseToken(req.headers.authorization);
-
         const {
             session_name,
             description,
@@ -18,9 +18,21 @@ export default async function sessionRoute(fastify: FastifyInstance) {
             winner_max_wins,
             number_of_courts
         } = req.body as CreateSessionBody
-    
+
+        console.log('Creating session with data:', {
+            session_name,
+            description,
+            host_id: user_id.sub, // Use the user ID from the token
+            sport,
+            team_size,
+            max_teams,
+            starts_at: new Date(starts_at).toISOString(), // Ensure it's in ISO format
+            rotation_mode,
+            winner_max_wins,
+            number_of_courts: number_of_courts || 1 // Default to 1 if not provided
+        });
         const { data, error } = await supabase
-        .from('sessions')
+        .from('Session')
         .insert({
             session_name,
             description,
@@ -33,8 +45,9 @@ export default async function sessionRoute(fastify: FastifyInstance) {
             winner_max_wins,
             number_of_courts: number_of_courts || 1 // Default to 1 if not provided
         })  
-        .select('id')
-        .single(); // Use .single() to get a single object instead of an array
+        //.select('id')
+        //.single(); // Use .single() to get a single object instead of an array
+        console.log('Supabase response:', { data, error });
         
         if (error) {
             console.error('Error creating session:', error);

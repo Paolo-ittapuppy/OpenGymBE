@@ -15,3 +15,10 @@ export type CreateSessionBody = {
     winner_max_wins?: number,
     number_of_courts: number // Optional field, default to 1 if not provided
 };
+
+export type CreateTeamBody = {
+  team_name: string,
+  team_order: number,
+  session_id: string,
+  captian_id: number
+}

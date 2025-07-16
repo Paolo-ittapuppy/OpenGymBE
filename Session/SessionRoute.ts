@@ -70,7 +70,7 @@ export default async function sessionRoute(fastify: FastifyInstance) {
 
     fastify.post('/:session_id/create-team', async (req, res)=>{
         try{
-            const user_id = verifySupabaseToken(req.headers.authorization);
+            const user_id = verifySupabaseToken(req.headers.authorization).sub;
             const { session_id } = req.params as { session_id: string };
             const { team_name } = req.body as { team_name: string };
 

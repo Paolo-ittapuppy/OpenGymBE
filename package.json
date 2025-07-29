@@ -20,9 +20,12 @@
   "homepage": "https://github.com/Paolo-ittapuppy/OpenGymBE#readme",
   "dependencies": {
     "@fastify/cors": "^11.0.1",
+    "@fastify/redis": "^7.0.2",
+    "@fastify/websocket": "^11.2.0",
     "@supabase/supabase-js": "^2.50.4",
     "dotenv": "^17.2.0",
     "fastify": "^5.4.0",
+    "fastify-print-routes": "^4.1.0",
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
